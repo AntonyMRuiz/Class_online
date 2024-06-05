@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,16 +28,16 @@ public class LessonController implements ControllerGeneric<LessonRequest, Lesson
     @Autowired
     private final ILessonService lessonService;
     
-    @Override
+    @PostMapping
     public ResponseEntity<LessonResponse> create(
         @Validated @RequestBody LessonRequest request) {
         return ResponseEntity.ok(this.lessonService.create(request));
     }
 
-    @Override
-    public ResponseEntity<LessonResponse> get(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'get'");
+    @GetMapping(path = "/{lessonId}/multimedia")
+    public ResponseEntity<LessonResponse> get(
+        @PathVariable Long lessonId) {
+        return ResponseEntity.ok(this.lessonService.get(lessonId));
     }
 
     @Override
@@ -50,7 +52,7 @@ public class LessonController implements ControllerGeneric<LessonRequest, Lesson
         throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
-    @PostMapping(path = "/{lessonId}/disable")
+    @PatchMapping(path = "/{lessonId}/disable")
     public ResponseEntity<LessonResponse> lessonDisable(
         @PathVariable Long lessonId) {
         return ResponseEntity.ok(this.lessonService.disable(lessonId));
