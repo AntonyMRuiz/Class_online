@@ -1,9 +1,8 @@
 package com.riwi.class_online.api.dtos.request.create;
 
-import java.util.List;
-
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,8 +21,10 @@ public class LessonRequest {
     @NotBlank(message = "Content is required")
     private String content;
 
+    @NotNull(message = "Active is required")
+    @Pattern(regexp = "true|false")
+    private boolean active;
+
     @NotNull(message = "Class ID is required")
     private Long classId;
-    
-    List<MultimediaRequest> multimedias;
 }
