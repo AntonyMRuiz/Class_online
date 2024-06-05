@@ -1,5 +1,6 @@
 package com.riwi.class_online.api.dtos.request.create;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -15,15 +16,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentRequest {
-    @NotBlank(message = "Type is required")
+    @NotBlank(message = "Name is required")
     private String name;
     
-    @NotBlank(message = "Type is required")
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email is invalid")
     private String email;
-
-    @NotNull(message = "Active is required")
-    @Pattern(regexp = "true|false")
-    private boolean active;
 
     @NotNull(message = "Class ID is required")
     private Long classId;

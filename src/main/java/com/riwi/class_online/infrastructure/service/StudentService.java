@@ -30,8 +30,8 @@ public class StudentService implements IStudentService {
 
     @Override
     public StudentResponse create(StudentRequest request) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'create'");
+        Student student = this.studentMapper.requestToEntity(request);
+        return this.studentMapper.entityToResponse(this.studentRepository.save(student));
     }
 
     @Override
