@@ -19,5 +19,4 @@ public class StudentResponse {
     private String email;
     private LocalDateTime createdAt;
     private boolean active;
-    private ClassResponse classId;
 }
