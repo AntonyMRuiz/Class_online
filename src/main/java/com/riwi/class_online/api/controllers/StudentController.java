@@ -58,7 +58,7 @@ public class StudentController implements ControllerGeneric<StudentRequest,Stude
         @RequestParam(defaultValue = "1") int page, 
         @RequestParam(defaultValue = "10") int size, 
         @RequestParam(defaultValue = "") String name) {
-        return ResponseEntity.ok(this.studentService.getAllByName(page, size, name));
+        return ResponseEntity.ok(this.studentService.getAllByName(page-1, size, name));
     }
 
     @Override
