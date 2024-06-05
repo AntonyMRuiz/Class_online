@@ -3,6 +3,9 @@ package com.riwi.class_online.api.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +28,7 @@ public class LessonController implements ControllerGeneric<LessonRequest, Lesson
     
     @Override
     public ResponseEntity<LessonResponse> create(
-        @RequestBody LessonRequest request) {
+        @Validated @RequestBody LessonRequest request) {
         return ResponseEntity.ok(this.lessonService.create(request));
     }
 
@@ -45,6 +48,12 @@ public class LessonController implements ControllerGeneric<LessonRequest, Lesson
     public ResponseEntity<LessonResponse> update(LessonRequest request, Long id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'update'");
+    }
+
+    @PostMapping(path = "/{lessonId}/disable")
+    public ResponseEntity<LessonResponse> lessonDisable(
+        @PathVariable Long lessonId) {
+        return ResponseEntity.ok(this.lessonService.disable(lessonId));
     }
 
     @Override
