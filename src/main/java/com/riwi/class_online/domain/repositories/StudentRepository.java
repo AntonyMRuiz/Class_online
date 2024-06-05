@@ -10,4 +10,6 @@ import com.riwi.class_online.domain.entities.Student;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
     Page<Student> findByNameAndActive(PageRequest pageRequest, String name, boolean active);
+
+    Student findByEmail(String email);
 }
