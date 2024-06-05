@@ -12,6 +12,7 @@ import com.riwi.class_online.domain.repositories.StudentRepository;
 import com.riwi.class_online.infrastructure.abstract_services.IStudentService;
 import com.riwi.class_online.infrastructure.helpers.ServiceHelper;
 import com.riwi.class_online.infrastructure.helpers.abstract_mapper.IStudentMapper;
+import com.riwi.class_online.util.exceptions.BadRequestException;
 
 import lombok.AllArgsConstructor;
 
@@ -49,8 +50,16 @@ public class StudentService implements IStudentService {
     
     @Override
     public StudentResponse update(Long id, StudentRequest request) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        this.serviceHelper.find(id, studentRepository, "student");
+        Student student = this.studentMapper.requestToEntity(request);
+
+        if (this.studentRepository.findByEmail(request.getEmail()) == null) {
+            throw new BadRequestException("Email already registered, NOT UPDATE STUDENT");
+        }
+
+        student.setId(id);
+        
+        return this.studentMapper.entityToResponse(this.studentRepository.save(student));
     }
 
     @Override

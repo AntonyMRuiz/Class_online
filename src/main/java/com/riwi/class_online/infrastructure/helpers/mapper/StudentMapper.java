@@ -31,7 +31,7 @@ public class StudentMapper implements IStudentMapper {
     public Student requestToEntity(StudentRequest request) {
         return Student.builder()
                 .name(request.getName())
-                .email(request.getEmail())
+                .email(request.getEmail().toLowerCase())
                 .active(true)
                 .classId(this.serviceHelper.find(request.getClassId(), classRepository, "Class ID"))
                 .build();
