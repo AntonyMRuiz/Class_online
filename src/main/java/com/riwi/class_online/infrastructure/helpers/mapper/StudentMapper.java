@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.riwi.class_online.api.dtos.request.create.StudentRequest;
-import com.riwi.class_online.api.dtos.response.StudentFullResponse;
+import com.riwi.class_online.api.dtos.response.StudentDetailsResponse;
 import com.riwi.class_online.api.dtos.response.StudentResponse;
 import com.riwi.class_online.domain.entities.Student;
 import com.riwi.class_online.infrastructure.helpers.abstract_mapper.IClassMapper;
@@ -37,8 +37,8 @@ public class StudentMapper implements IStudentMapper {
     }
 
     @Override
-    public StudentFullResponse entityToFullResponse(Student entity) {
-        return StudentFullResponse.builder()
+    public StudentDetailsResponse entityToFullResponse(Student entity) {
+        return StudentDetailsResponse.builder()
                 .id(entity.getId())
                 .name(entity.getName())
                 .email(entity.getEmail())

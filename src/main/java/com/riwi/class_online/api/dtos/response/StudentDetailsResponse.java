@@ -11,6 +11,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentFullResponse extends StudentResponse{
+public class StudentDetailsResponse extends StudentResponse{
     private ClassResponse classId;
 }
