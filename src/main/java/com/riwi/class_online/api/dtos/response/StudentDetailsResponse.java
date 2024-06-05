@@ -1,7 +1,5 @@
 package com.riwi.class_online.api.dtos.response;
 
-import java.time.LocalDateTime;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,10 +11,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentResponse {
-    private Long id;
-    private String name;
-    private String email;
-    private LocalDateTime createdAt;
-    private boolean active;
+public class StudentDetailsResponse extends StudentResponse{
+    private ClassResponse classId;
 }
