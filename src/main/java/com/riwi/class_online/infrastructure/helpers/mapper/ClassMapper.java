@@ -18,6 +18,7 @@ public class ClassMapper implements IClassMapper{
         return ClassEntity.builder()
                 .name(request.getName())
                 .description(request.getDescription())
+                .active(true)
                 .build();
     }
 

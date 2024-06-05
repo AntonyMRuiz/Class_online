@@ -29,8 +29,8 @@ public class ClassService implements IClassService {
 
     @Override
     public ClassResponse create(ClassRequest request) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'create'");
+        ClassEntity classData = this.classMapper.requestToEntity(request);
+        return this.classMapper.entityToResponse(this.classRepository.save(classData));
     }
 
     @Override
