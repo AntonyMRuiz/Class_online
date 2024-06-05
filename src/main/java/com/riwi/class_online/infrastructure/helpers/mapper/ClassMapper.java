@@ -11,10 +11,14 @@ import lombok.AllArgsConstructor;
 
 @Component
 @AllArgsConstructor
-public class ClassMapper implements IClassMapper{@Override
+public class ClassMapper implements IClassMapper{
+    
+    @Override
     public ClassEntity requestToEntity(ClassRequest request) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'requestToEntity'");
+        return ClassEntity.builder()
+                .name(request.getName())
+                .description(request.getDescription())
+                .build();
     }
 
     @Override

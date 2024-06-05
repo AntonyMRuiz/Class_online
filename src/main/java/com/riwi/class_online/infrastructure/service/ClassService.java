@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.riwi.class_online.api.dtos.request.create.ClassRequest;
 import com.riwi.class_online.api.dtos.response.ClassResponse;
+import com.riwi.class_online.domain.entities.ClassEntity;
 import com.riwi.class_online.domain.repositories.ClassRepository;
 import com.riwi.class_online.infrastructure.abstract_services.IClassService;
 import com.riwi.class_online.infrastructure.helpers.ServiceHelper;
@@ -34,8 +35,8 @@ public class ClassService implements IClassService {
 
     @Override
     public ClassResponse get(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'get'");
+        ClassEntity classEntity = this.serviceHelper.find(id, classRepository, "class");
+        return this.classMapper.entityToResponse(classEntity);
     }
 
     @Override
