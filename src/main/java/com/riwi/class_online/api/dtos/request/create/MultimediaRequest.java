@@ -20,6 +20,4 @@ public class MultimediaRequest {
     @NotBlank(message = "URL is required")
     private String url;
 
-    @NotNull(message = "Lesson ID is required")
-    private Long lessonId;
 }

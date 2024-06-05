@@ -1,6 +1,7 @@
 package com.riwi.class_online.api.dtos.response;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,4 +21,5 @@ public class LessonResponse {
     private LocalDateTime createdAt;
     private boolean active;
     private ClassResponse classId;
+    private List<MultimediaResponse> multimedias;
 }
