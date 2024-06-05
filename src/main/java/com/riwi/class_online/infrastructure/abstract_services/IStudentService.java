@@ -7,4 +7,6 @@ import com.riwi.class_online.api.dtos.response.StudentResponse;
 
 public interface IStudentService extends ServiceGeneric<StudentRequest, StudentResponse> {
     public Page<StudentResponse> getAllByName(int page, int size, String name);
+
+    public StudentResponse disable(Long id);
 }

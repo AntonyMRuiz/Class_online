@@ -70,5 +70,12 @@ public class StudentService implements IStudentService {
                 .map((student)->this.studentMapper.entityToResponse(student));
     }
 
+    @Override
+    public StudentResponse disable(Long id) {
+        Student studentData = this.serviceHelper.find(id, studentRepository, "student");
+        studentData.setActive(false);
+        return this.studentMapper.entityToResponse(this.studentRepository.save(studentData));
+    }
+
     
 }

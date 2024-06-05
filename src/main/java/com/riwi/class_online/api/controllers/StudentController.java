@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,6 +39,12 @@ public class StudentController implements ControllerGeneric<StudentRequest,Stude
     public ResponseEntity<StudentResponse> get(
         @PathVariable Long studentId) {
         return ResponseEntity.ok(this.studentService.get(studentId));
+    }
+
+    @PatchMapping(path = "/{studentId}/disable")
+    public ResponseEntity<StudentResponse> studentDisable(
+        @PathVariable Long studentId) {
+        return ResponseEntity.ok(this.studentService.disable(studentId));
     }
 
     @Override
